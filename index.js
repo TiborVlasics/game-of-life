@@ -92,6 +92,25 @@ function evolveGame(gameMatrix) {
   return evolvedGame;
 }
 
+function updateGrid(matrix) {
+  const grid = document.querySelector(".grid");
+
+  for (let i = 0; i < matrix.length; i++) {
+    let matrixRow = matrix[i];
+    let gridRow = grid.children[i];
+    for (let j = 0; j < matrixRow.length; j++) {
+      let matrixElement = matrixRow[j];
+      let cell = gridRow.children[j];
+
+      if (matrixElement === 1 && cell.className === "cell") {
+        cell.className = "cell living";
+      } else if (matrixElement === 0 && cell.className === "cell living") {
+        cell.className = "cell";
+      }
+    }
+  }
+}
+
 function main() {
   const root = document.querySelector("#root");
   const grid = createGrid(20, 15);
