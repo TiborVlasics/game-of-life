@@ -20,3 +20,8 @@
 .living {
   background-color: black;
 }
+
+.start-button {
+  margin-top: 30px;
+  font-size: 18px;
+}

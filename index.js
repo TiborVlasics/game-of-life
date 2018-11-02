@@ -19,6 +19,18 @@ function createGrid(height, width) {
   return grid;
 }
 
+function createStartButton() {
+  const button = document.createElement("button");
+  button.onclick = function() {
+    this.style.display = "none";
+    startGame();
+  };
+  button.className = "start-button";
+  button.innerHTML = "Start evolving";
+
+  return button;
+}
+
 function mapGridToMatrix(grid) {
   let matrix = [];
   let rows = grid.children;
@@ -43,7 +55,9 @@ function mapGridToMatrix(grid) {
 function main() {
   const root = document.querySelector("#root");
   const grid = createGrid(20, 15);
+  const button = createStartButton();
   root.appendChild(grid);
+  root.appendChild(button);
 }
 
 main();
