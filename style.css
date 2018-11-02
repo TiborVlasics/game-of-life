@@ -1,5 +1,13 @@
+.grid {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .row {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
 }
 
 .cell {
