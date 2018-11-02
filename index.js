@@ -120,3 +120,14 @@ function main() {
 }
 
 main();
+
+function startGame() {
+  setInterval(updateGame, 1000);
+}
+
+function updateGame() {
+  const grid = document.querySelector(".grid");
+  const matrix = mapGridToMatrix(grid);
+  const evolvedGame = evolveGame(matrix);
+  updateGrid(evolvedGame);
+}
