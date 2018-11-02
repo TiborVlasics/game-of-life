@@ -52,6 +52,46 @@ function mapGridToMatrix(grid) {
   return matrix;
 }
 
+function evolveGame(gameMatrix) {
+  let evolvedGame = [];
+
+  for (let i = 0; i < gameMatrix.length; i++) {
+    evolvedGame.push([]);
+
+    for (let j = 0; j < gameMatrix[i].length; j++) {
+      let neighbors = 0;
+      if (gameMatrix[i - 1] !== undefined && gameMatrix[i - 1][j - 1] === 1)
+        ++neighbors;
+      if (gameMatrix[i - 1] !== undefined && gameMatrix[i - 1][j] === 1)
+        ++neighbors;
+      if (gameMatrix[i - 1] !== undefined && gameMatrix[i - 1][j + 1] === 1)
+        ++neighbors;
+      if (gameMatrix[i] !== undefined && gameMatrix[i][j + 1] === 1)
+        ++neighbors;
+      if (gameMatrix[i + 1] !== undefined && gameMatrix[i + 1][j + 1] === 1)
+        ++neighbors;
+      if (gameMatrix[i + 1] !== undefined && gameMatrix[i + 1][j] === 1)
+        ++neighbors;
+      if (gameMatrix[i + 1] !== undefined && gameMatrix[i + 1][j - 1] === 1)
+        ++neighbors;
+      if (gameMatrix[i][j - 1] !== undefined && gameMatrix[i][j - 1] === 1)
+        ++neighbors;
+
+      if (gameMatrix[i][j] === 1 && (neighbors < 2 || neighbors > 3)) {
+        evolvedGame[i].push(0);
+      } else if (gameMatrix[i][j] === 1) {
+        evolvedGame[i].push(1);
+      } else if (gameMatrix[i][j] === 0 && neighbors === 3) {
+        evolvedGame[i].push(1);
+      } else {
+        evolvedGame[i].push(0);
+      }
+    }
+  }
+
+  return evolvedGame;
+}
+
 function main() {
   const root = document.querySelector("#root");
   const grid = createGrid(20, 15);
