@@ -9,6 +9,7 @@ function createGrid(height, width) {
     for (let j = 0; j < width; j++) {
       const cell = document.createElement("div");
       cell.className = "cell";
+      cell.onclick = () => cell.classList.toggle("living");
       row.appendChild(cell);
     }
 
