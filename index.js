@@ -111,16 +111,6 @@ function updateGrid(matrix) {
   }
 }
 
-function main() {
-  const root = document.querySelector("#root");
-  const grid = createGrid(25, 25);
-  const button = createStartButton();
-  root.appendChild(grid);
-  root.appendChild(button);
-}
-
-main();
-
 function startGame() {
   setInterval(updateGame, 1000);
 }
@@ -131,3 +121,13 @@ function updateGame() {
   const evolvedGame = evolveGame(matrix);
   updateGrid(evolvedGame);
 }
+
+function main() {
+  const root = document.querySelector("#root");
+  const grid = createGrid(25, 25);
+  const button = createStartButton();
+  root.appendChild(grid);
+  root.appendChild(button);
+}
+
+main();
